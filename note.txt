@@ -1,0 +1,125 @@
+https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/
+https://www.npmjs.com/package/angular-flickity
+
+step 3: install all tools
+	-after install Ruby: open Control Panel\System and Security\System -> choose Advanced system settings -> Advanced -> Environment Variables -> System variables -> Path (example: C:\Ruby23-x64\bin)
+	-open cmd with Ruby, run: gem install compass
+
+step 6: + setup client: - keep package.json and delete files config
+			- open cmd with Nodejs
+			- go to client location
+			- run: npm install
+			- run: npm install -g yo
+			- run: npm install -g grunt-cli
+			- run: npm install -g bower
+			- run: bower install
+	+ update SVN data
+
+step 7: + server: - open cmd 
+		  - go to server location
+		  - run: npm start
+	+ client: - open cmd 
+		  - go to client location
+		  - run: grunt serve
+
+//https://codingthesmartway.com/using-bootstrap-with-angular/
+// https://scotch.io/tutorials/build-a-mobile-app-with-angular-2-and-ionic-2
+// routing: http://jasonwatmore.com/post/2016/09/29/angular-2-user-registration-and-login-example-tutorial#app-routing-ts
+
+//https://stackoverflow.com/questions/35985009/angular-2-what-is-equivalent-to-root-scope
+// https://angular.io/guide/component-interaction
+https://stackoverflow.com/questions/34376854/delegation-eventemitter-or-observable-in-angular2/35568924
+https://stackoverflow.com/questions/35985009/angular-2-what-is-equivalent-to-root-scope
+
+npm install bootstrap jquery --save
+node_modules/jquery/dist/jquery.min.js
+node_modules/bootstrap/dist/css/bootstrap.min.css
+node_modules/bootstrap/dist/js/bootstrap.min.js
+
+http://ionicframework.com/docs/components/#toolbar-segment
+
+/*ionic command*/
+ionic platform add android
+ionic build android
+
+ionic cordova platform add android
+ionic cordova build --release android
+ionic cordova build android
+
+cordova requirements
+ionic start <project name> --type=ionic-angular
+
+createMarker(place)
+{
+    let marker = new google.maps.Marker({
+    map: this.map,
+    animation: google.maps.Animation.DROP,
+    position: place.geometry.location
+    });   
+} 
+-- gg map
+ionic cordova plugin add cordova-plugin-geolocation
+npm install --save @ionic-native/geolocation
+
+https://www.joshmorony.com/ionic-2-how-to-use-google-maps-geolocation-video-tutorial/
+https://embed.plnkr.co/YX7W20/
+https://www.joshmorony.com/create-a-nearby-places-list-with-google-maps-in-ionic-2-part-1/
+https://www.joshmorony.com/create-a-nearby-places-list-with-google-maps-in-ionic-2-part-2/
+
+http://ionicframework.com/docs/native/background-geolocation/
+http://ionicframework.com/docs/native/sms/
+http://ionicframework.com/docs/native/call-number/
+
+https://developers.google.com/maps/documentation/javascript/examples/marker-labels
+---------
+GG map androi api key
+AIzaSyB45tQWbBV8PdEMi_2TwWuv2PMxs3UvSGI
+AIzaSyDZv_rJayhB_6itfmRgOQlrfaMoMXyvOPM
+---------
+
+---------
+GG map ios api key
+AIzaSyA1W7KhvIzCiSKxQZKkWcOj1sZUy5FgW80
+---------
+content_copy
+
+// 05/11:
+{name: 'Amsterdam', show: true},
+      {name: 'Bogota', show: true},
+      {name: 'Buenos Aires', show: true},
+      {name: 'Cairo', show: false},
+      {name: 'Dhaka', show: false},
+      {name: 'Edinburgh', show: false},
+      {name: 'Geneva', show: false},
+      {name: 'Genoa', show: false},
+      {name: 'Glasglow', show: false},
+      {name: 'Hanoi', show: false},
+      {name: 'Hong Kong', show: false},
+      {name: 'Islamabad', show: false},
+      {name: 'Istanbul', show: false},
+      {name: 'Jakarta', show: false},
+      {name: 'Kiel', show: false},
+      {name: 'Kyoto', show: false},
+      {name: 'Le Havre', show: false},
+      {name: 'Lebanon', show: false},
+      {name: 'Lhasa', show: false},
+      {name: 'Lima', show: false},
+      {name: 'London', show: false},
+      {name: 'Los Angeles', show: false},
+      {name: 'Madrid', show: false},
+      {name: 'Manila', show: false},
+      {name: 'New York', show: false},
+      {name: 'Olympia', show: false},
+      {name: 'Oslo', show: false},
+      {name: 'Panama City', show: false},
+      {name: 'Peking', show: false},
+      {name: 'Philadelphia', show: false},
+      {name: 'San Francisco', show: false},
+      {name: 'Seoul', show: false},
+      {name: 'Taipeh', show: false},
+      {name: 'Tel Aviv', show: false},
+      {name: 'Tokio', show: false},
+      {name: 'Uelzen', show: false},
+      {name: 'Washington', show: false}
+
+

@@ -1,0 +1,233 @@
+<ion-header>
+  <ion-navbar>
+    <div class="taskbar-Logo" (click)="logoClicked()">
+        <img src="./assets/imgs/logo.png"/>
+        <span class="taskbar-Slogan">E&M</span>
+    </div>
+    <ion-buttons start *ngFor="let x of servicesBarItems" (click)="servicesBarItemClicked(x.name)" >
+      <button ion-button color="royal" *ngIf="x.isShow">
+        <img src="{{x.icon}}" style="width: 30px; height: 30px; border: 1px solid #fff; border-radius: 10px;"/>
+      </button>
+    </ion-buttons>
+    <button ion-button end menuToggle="right">
+      <ion-icon name="menu"></ion-icon>
+    </button> 
+  </ion-navbar>
+  <!-- <ion-toolbar>
+    <ion-buttons *ngFor="let x of servicesBarItems">
+      <button ion-button color="royal">
+        <img src="{{x.icon}}" style="width: 20px; height: 20px; border: 1px solid #fff; border-radius: 10px;"/>
+      </button>
+    </ion-buttons>
+    <button ion-button end menuToggle="right">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-toolbar> -->
+
+</ion-header>
+
+
+<ion-content>
+  <div #ggmap id="ggmap" class="main-map">    
+  </div>
+  <div id="main-content" class="container" *ngIf="screenType == 1">
+    <!-- <div class="row clear-margin-left clear-margin-right" >
+      <div class="col-sm-12 col-sx-12 clear-margin-left clear-margin-right"> -->
+      <div id="select-service-div" class="search-panel-user-input margin5">
+        <ion-item >
+          <ion-input id="select-service" type="text" [(ngModel)]="emServiceSelected" ([formControl])="searchControl"
+          (tap)="searchService()" placeholder="Bạn cần sửa gì?" name="select-service"></ion-input>
+        </ion-item>
+      </div>
+      <!-- </div>
+    </div> -->
+    <!-- <div class="row clear-margin-left clear-margin-right">
+      <div class="col-sm-12 col-xs-12 clear-margin-left clear-margin-right"> -->
+      <div id="search-panel-mechanic-level-div" class="search-panel-mechanic-level margin5">
+        <ion-item >
+          <ion-label>Bậc</ion-label>
+          <ion-select [(ngModel)]="level">
+            <ion-option>1</ion-option>
+            <ion-option>2</ion-option>
+            <ion-option checked="true">3</ion-option>
+            <ion-option>4</ion-option>
+            <ion-option>5</ion-option>
+            <ion-option>6</ion-option>
+            <ion-option>7</ion-option>
+          </ion-select>
+        </ion-item>
+      </div>
+      <!-- </div>
+    </div> -->
+
+    <!-- <div class="row block-icon-div" *ngIf="showServiceSlide">        
+      <div class="col-sm-12 col-xs-12" > -->
+        <!-- <div class="quick-click-hide" >
+            <img src="assets/imgs/MinusButton.Grey.svg" (click)="hideServiceSlide()" />
+        </div> -->
+        <!-- <div class="quick-click" style="float:right;">
+          <img src="assets/imgs/CheckMark.Green.svg" (click)="addToServicesBar()" *ngIf="isShowQuickClick" />
+          <img src="assets/imgs/CheckMark.Grey.svg" (click)="addToServicesBar()" *ngIf="!isShowQuickClick" />
+          <img src="assets/imgs/MinusButton.Grey.svg" (click)="hideServiceSlide()" />
+        </div> -->
+        <!-- <div class="icon-item">           -->
+          <div class="service-slide" *ngIf="showServiceSlide" style="top: {{serviceSlideTop}}; height: {{serviceSlideHeight}};">
+            <ion-slides class="margin5">              
+              <ion-slide *ngFor="let slide of serviceSlideList">
+                <ion-toolbar>
+                  <ion-buttons end>
+                    <button ion-button color="royal" (click)="gotoPrevSlide()">
+                      <img src="assets/imgs/LeftArrowIcon.Red.svg" style="width: 30px; height: 30px; border: 1px solid #fff; border-radius: 10px;"/>
+                    </button>
+                    <button ion-button color="royal" (click)="gotoNextSlide()">
+                      <img src="assets/imgs/RightArrowIcon.Red.svg" style="width: 30px; height: 30px; border: 1px solid #fff; border-radius: 10px;"/>
+                    </button>
+                    <button ion-button color="royal" (click)="addToServicesBar()" *ngIf="slide.name != 'help'">
+                      <img src="assets/imgs/CheckMark.Green.svg" *ngIf="slide.isChecked" style="width: 30px; height: 30px; border: 1px solid #fff; border-radius: 10px;" />
+                      <img src="assets/imgs/CheckMark.Grey.svg" *ngIf="!slide.isChecked" style="width: 30px; height: 30px; border: 1px solid #fff; border-radius: 10px;" />
+                    </button>
+                    <button ion-button color="royal" (click)="hideServiceSlide()">
+                      <img src="assets/imgs/MinusButton.Grey.svg" style="width: 30px; height: 30px; border: 1px solid #fff; border-radius: 10px;"/>
+                    </button>
+                  </ion-buttons>
+                </ion-toolbar>
+                <h2>{{slide.title}}</h2>
+                <p>{{slide.description}}</p>
+              </ion-slide>                       
+            </ion-slides>
+          </div>          
+        <!-- </div>
+      </div>
+    </div> -->
+
+    <!-- <div class="row" style="height:20vh; width:100vw;">
+      <p> Gia tien here</p>
+    </div> -->
+
+    <ion-footer>
+      <ion-toolbar>
+        <ion-title>Cost, Request or sth here</ion-title>
+      </ion-toolbar>
+    </ion-footer>
+
+  </div>
+
+  <div id="main-content" class="container" *ngIf="screenType == 2">
+    <div class="row clear-margin-left clear-margin-right" >
+      <div class="col-sm-12 col-xs-12 clear-margin-left clear-margin-right">
+        <ion-item class="search-panel-user-input margin5">
+          <ion-input id="select-service" type="text" [(ngModel)]="emServiceSelected" ([formControl])="searchControl"
+          (tap)="searchService()" placeholder="Bạn cần sửa gì?" name="select-service"></ion-input>
+        </ion-item>
+      </div>
+    </div>
+    <div class="row clear-margin-left clear-margin-right">
+      <div class="col-sm-12 col-xs-12 clear-margin-left clear-margin-right">
+        <ion-item class="search-panel-mechanic-level margin5">
+          <ion-label>Bậc</ion-label>
+          <ion-select [(ngModel)]="level">
+            <ion-option>1</ion-option>
+            <ion-option>2</ion-option>
+            <ion-option checked="true">3</ion-option>
+            <ion-option>4</ion-option>
+            <ion-option>5</ion-option>
+            <ion-option>6</ion-option>
+            <ion-option>7</ion-option>
+          </ion-select>
+        </ion-item>
+      </div>
+    </div>
+  
+    <div class="row block-icon-div" style="top: {{serviceSlideTop}}; height: {{serviceSlideHeight}}; overflow: auto">        
+      <div class="col-sm-12 col-xs-12 block-icon" >
+        <div class="icon-item">
+          <div class="quick-click-hide" >
+              <img src="assets/imgs/MinusButton.Grey.svg" (click)="hideServiceSlide()" />
+          </div>
+          <div class="quick-click">
+            <img src="assets/imgs/CheckMark.Green.svg" (click)="addBottomMenu()" *ngIf="isShow" />
+            <img src="assets/imgs/CheckMark.Grey.svg" (click)="addBottomMenu()" *ngIf="!isShow" />
+          </div>
+          <div class="service-slide">
+            <ion-slides>              
+              <ion-slide >
+                <h2>Slide 1</h2>
+              </ion-slide>          
+              <ion-slide style="background-color: blue">
+                <h2>Slide 2</h2>
+              </ion-slide>          
+              <ion-slide style="background-color: red">
+                <h2>Slide 3</h2>
+              </ion-slide>              
+            </ion-slides>
+          </div>          
+        </div>
+      </div>
+    </div>
+  
+    <!-- <div class="row" style="height:20vh; width:100vw;">
+      <p> Gia tien here</p>
+    </div> -->
+
+  </div>
+
+  <div id="main-content" class="container" *ngIf="screenType == 4">
+    <div class="row clear-margin-left clear-margin-right" >
+      <div class="col-md-12 col-lg-12 clear-margin-left clear-margin-right">
+        <ion-item class="search-panel-user-input margin5">
+          <ion-input id="select-service" type="text" [(ngModel)]="emServiceSelected" ([formControl])="searchControl"
+          (tap)="searchService()" placeholder="Bạn cần sửa gì?" name="select-service"></ion-input>
+        </ion-item>
+      </div>
+    </div>
+    <div class="row clear-margin-left clear-margin-right">
+      <div class="col-md-12 col-lg-12 clear-margin-left clear-margin-right">
+        <ion-item class="search-panel-mechanic-level margin5">
+          <ion-label>Bậc</ion-label>
+          <ion-select [(ngModel)]="level">
+            <ion-option>1</ion-option>
+            <ion-option>2</ion-option>
+            <ion-option checked="true">3</ion-option>
+            <ion-option>4</ion-option>
+            <ion-option>5</ion-option>
+            <ion-option>6</ion-option>
+            <ion-option>7</ion-option>
+          </ion-select>
+        </ion-item>
+      </div>
+    </div>
+    
+    <div class="row block-icon-div" style="top: {{serviceSlideTop}}; height: {{serviceSlideHeight}}; overflow: auto">        
+      <div class="col-md-12 col-lg-12 block-icon" >
+        <div class="icon-item">
+          <div class="quick-click-hide" >
+              <img src="assets/imgs/MinusButton.Grey.svg" (click)="hideServiceSlide()" />
+          </div>
+          <div class="quick-click">
+            <img src="assets/imgs/CheckMark.Green.svg" (click)="addBottomMenu()" *ngIf="isShow" />
+            <img src="assets/imgs/CheckMark.Grey.svg" (click)="addBottomMenu()" *ngIf="!isShow" />
+          </div>
+          <div class="service-slide">
+            <ion-slides>              
+              <ion-slide >
+                <h2>Slide 1</h2>
+              </ion-slide>          
+              <ion-slide style="background-color: blue">
+                <h2>Slide 2</h2>
+              </ion-slide>          
+              <ion-slide style="background-color: red">
+                <h2>Slide 3</h2>
+              </ion-slide>              
+            </ion-slides>
+          </div>          
+        </div>
+      </div>
+    </div>
+    
+    <!-- <div class="row" style="height:20vh; width:100vw;">
+      <p> Gia tien here</p>
+    </div> -->
+
+  </div>
+
+</ion-content>
